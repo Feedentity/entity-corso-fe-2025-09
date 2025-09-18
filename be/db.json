@@ -1,5 +1,9 @@
 {
-    "user": [
-        {"id": "admin", "name": "admin" }
-    ]
+  "users": [
+    {
+        "id": "1",
+        "nome": "admin",
+        "cognome": "admin"
+    }
+  ]
 }
