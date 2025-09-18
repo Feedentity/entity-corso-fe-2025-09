@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AngularJS v1 Basic</title>
+  <!-- AngularJS 1.8.3 + ngRoute (CDN) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>AngularJS v1 — Starter</h1>
+    <nav>
+      <a href="#!/">Home</a>
+      <a href="#!/about">About</a>
+    </nav>
+  </header>
+
+  <main ng-view class="view"></main>
+
+  <!-- App scripts -->
+  <script src="app/app.js"></script>
+  <script src="app/controllers/MainCtrl.js"></script>
+  <script src="app/services/apiService.js"></script>
+</body>
+</html>

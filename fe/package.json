@@ -1,0 +1,8 @@
+{
+  "name": "angularjs-v1-basic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx live-server --port=8080 --open=./index.html"
+  }
+}
