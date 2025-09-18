@@ -1,6 +1,5 @@
 {
-    "user": {
-        "id": "admin",
-        "name": "admin"
-    }
+    "user": [
+        {"id": "admin", "name": "admin" }
+    ]
 }
