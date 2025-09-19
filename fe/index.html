@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-resource.js"></script>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body ng-controller = "sessionCtrl">
   <header class="site-header" ng-controller = "headCtrl">
     <h1>Cimitero World</h1>
     <nav>
@@ -18,7 +18,7 @@
       <a href="#!/about">About</a>
       <a href ng-click="nav.goShopTombe()">ShopTomba</a>
       <a href ng-click="nav.goShopFiori()">ShopFiore</a>
-      <div> <!--admin only-->
+      <div ng-if="user.isAdmin()"> <!--admin only-->
       <a href ng-click="nav.goZone()">Zone</a>
       <a href ng-click="nav.goTipiFiore()">Tipi Fiore</a>
       <a href ng-click="nav.goTipiTomba()">Tipi Tomba</a>
@@ -32,6 +32,7 @@
   <script src="app/app.js"></script>
   <script src="app/router.js"></script>
   <script src="indexCtrl.js"></script>
+  <script src="sessionCtrl.js"></script>
   <script src="app/controllers/MainCtrl.js"></script>
   <script src="app/services/apiService.js"></script>
   <script src="app/services/navigation.js"></script>
