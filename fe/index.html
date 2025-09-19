@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>AngularJS v1 — Starter</h1>
+  <header class="site-header" ng-controller = "headCtrl">
+    <h1>Cimitero World</h1>
     <nav>
-      <a href="#!/">Home</a>
+      <a href ng-click="nav.goHome()">Home</a>
       <a href="#!/about">About</a>
-      <a href="#!/ShopTomba">ShopTomba</a>
-      <a href="#!/ShopFiore">ShopFiore</a>
+      <a href ng-click="nav.goShopTombe()">ShopTomba</a>
+      <a href ng-click="nav.goShopFiori()">ShopFiore</a>
     </nav>
   </header>
 
@@ -26,6 +26,7 @@
   <!-- App scripts -->
   <script src="app/app.js"></script>
   <script src="app/router.js"></script>
+  <script src="indexCtrl.js"></script>
   <script src="app/controllers/MainCtrl.js"></script>
   <script src="app/services/apiService.js"></script>
   <script src="app/services/navigation.js"></script>
