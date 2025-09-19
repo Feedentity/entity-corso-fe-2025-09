@@ -40,7 +40,7 @@
       "isAdmin": false
     }
   ],
-  
+
   "versioneTombe": [
     {
       "id": "1",
@@ -79,27 +79,27 @@
       "id":1,
       "nome": "A",
       "capienza": 50,
-      "postiLiberi": 49,
       "descrizione":"Zona situata all'ingresso del cimitero",
-      "sovrapprezzo": 5
+      "sovrapprezzo": 5,
+      "listaTombe": [1]
     },
 
     {
       "id":2,
       "nome": "B",
       "capienza": 50,
-      "postiLiberi": 50,
       "descrizione":"Zona situata nella zona ovest del cimitero",
-      "sovrapprezzo": 3
+      "sovrapprezzo": 3,
+      "listaTombe": []
     },
 
     {
       "id":3,
       "nome": "C",
       "capienza": 50,
-      "postiLiberi": 50,
       "descrizione":"Zona situata nella zone est del cimitero",
-      "sovrapprezzo": 3
+      "sovrapprezzo": 3,
+      "listaTombe": []
     }
   ],
 
