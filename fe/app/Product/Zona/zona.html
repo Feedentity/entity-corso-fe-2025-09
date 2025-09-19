@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+
+<body>
+    <div ng-app="app" ng-controller="zonaCtrl">
+
+        <h1>Zone del cimitero</h1>
+
+        <table width="100%">
+            <tr>
+                <td>
+                    <h4>Settore</h4>
+                </td>
+                <td>
+                    <h4>Capienza</h4>
+                </td>
+                <td>
+                    <h4>Posti liberi</h4>
+                </td>
+                <td>
+                    <h4>Descrizione</h4>
+                </td>
+                <td>
+                    <h4>Sovrapprezzo</h4>
+                </td>
+            </tr>
+            <tr zone-cimitero ng-repeat="x in zone" z="x"></tr>
+        </table>
+
+
+    </div>
+
+    <script src="zona.js"></script>
+</body>
