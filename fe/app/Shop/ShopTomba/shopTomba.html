@@ -1,0 +1,20 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+<script src="shopTomba.js"></script>
+
+        <form id="dati" ng-app="app" ng-controller="shopTombaController">
+            <div >
+                <h1>Scegli la tomba</h1>
+                <br>
+                <h3>Scegli la versione</h3>
+                <my-version ></my-version>
+                <h3>Scegli la zona</h3>
+                <my-zone></my-zone>
+                
+                <br><br>
+                
+            </div>
+           
+            <div ng-view></div>
+
+        </form>
