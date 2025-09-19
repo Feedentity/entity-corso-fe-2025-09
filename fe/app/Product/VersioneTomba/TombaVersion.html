@@ -1,0 +1,24 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-resource.js"></script>
+<script src="TombaVersion.js"></script>
+
+<body ng-app="app" ng-controller="tombaVersionCtrl">
+    <div class="listProduct_Container">
+        <div class="listProduct">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Prezzo</th>
+                </tr>
+
+                <tr ng-repeat="vt in versioneTombe">
+                    <td>{{vt.nome}}</td>
+                    <td>{{vt.descrizione}}</td>
+                    <td>{{vt.prezzo | currency: '€'}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
