@@ -1,51 +1,37 @@
 
 app.config(function ($routeProvider, $locationProvider) {
-
+    let placeholder = '<section class="card"><h2>Placeholder</h2><p>This is a placeholder page</p></section>'
     $routeProvider
         .when('/login', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            templateUrl: 'app/Login/login.html',
             })
         .when('/home', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            template: placeholder
         })
         .when('/shop/tombe', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            templateUrl: 'app/Shop/ShopTomba/shopTomba.html',
+            controller: 'shopTombaController',
         })
         .when('/shop/fiori', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            templateUrl: 'app/Shop/ShopFiore/ShopFiore.html',
+            controller: 'ShopFioreCtrl'
         })
         .when('/tomba/:id', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            template: placeholder
         })
         .when('/admin/tipiTomba', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            template: placeholder
         })
         .when('/admin/tipiFiore', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            template: placeholder
         })
         .when('/admin/zone', {
-            templateUrl: 'app/views/home.html',
-            controller: 'MainCtrl',
-            controllerAs: 'vm'
+            template: placeholder
         })
         .when('/about', {
             template: '<section class="card"><h2>About</h2><p>Starter AngularJS v1 minimale.</p></section>'
         })
-        .otherwise({ redirectTo: '/home' });
+        .otherwise({ redirectTo: '/login' });
 
     // Disabilita HTML5 mode per semplicità (usa hashbang #!/)
     $locationProvider.hashPrefix('!');

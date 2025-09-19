@@ -1,5 +1,3 @@
-var app =angular.module("app",[]);
-
 app.controller('shopTombaController', function($scope, datiTombe) {
         $scope.tombe = [];
         datiTombe.getDati().then(function(response){
@@ -7,7 +5,7 @@ app.controller('shopTombaController', function($scope, datiTombe) {
         })
 });
 //funzione che prende tramite http i dati dal db
-app.service('datiTombe', function($http,) {
+app.service('datiTombe', function($http) {
 
 
     this.getDati = function() {

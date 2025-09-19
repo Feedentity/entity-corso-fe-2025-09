@@ -1,5 +1,3 @@
-var app = angular.module("app", []);
-
 // Controller che gestisce la pagina ShopFiore
 app.controller("ShopFioreCtrl", function ($scope, ShopFioreService) {
   $scope.fiori = [];
