@@ -1,4 +1,3 @@
-var app=angular.module('app', [])
 app.controller('tombaVersionCtrl', function($scope, tombaVersionService){
     $scope.versioneTombe=[];
 

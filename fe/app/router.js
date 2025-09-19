@@ -20,13 +20,16 @@ app.config(function ($routeProvider, $locationProvider) {
             template: placeholder
         })
         .when('/admin/tipiTomba', {
-            template: placeholder
+            templateUrl: 'app/Product/VersioneTomba/TombaVersion.html',
+            controller: 'tombaVersionCtrl',
         })
         .when('/admin/tipiFiore', {
-            template: placeholder
+            templateUrl: 'app/Product/VersioneFiore/FioreVersion.html',
+            controller: 'listaFioriCtrl',
         })
         .when('/admin/zone', {
-            template: placeholder
+            templateUrl: 'app/Product/Zona/zona.html',
+            controller: 'zonaCtrl',
         })
         .when('/about', {
             template: '<section class="card"><h2>About</h2><p>Starter AngularJS v1 minimale.</p></section>'

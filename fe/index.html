@@ -18,6 +18,11 @@
       <a href="#!/about">About</a>
       <a href ng-click="nav.goShopTombe()">ShopTomba</a>
       <a href ng-click="nav.goShopFiori()">ShopFiore</a>
+      <div> <!--admin only-->
+      <a href ng-click="nav.goZone()">Zone</a>
+      <a href ng-click="nav.goTipiFiore()">Tipi Fiore</a>
+      <a href ng-click="nav.goTipiTomba()">Tipi Tomba</a>
+      </div>
     </nav>
   </header>
 
@@ -34,5 +39,9 @@
   <script src="app/Login/login.js"></script>
   <script src="app/Shop/ShopFiore/ShopFiore.js"></script>
   <script src="app/Shop/ShopTomba/ShopTomba.js"></script>
+  <script src="app/Product/VersioneFiore/FioreVersionControl.js"></script>
+  <script src="app/Product/VersioneFiore/ServiceVersionFiori.js"></script>
+  <script src="app/Product/VersioneTomba/TombaVersion.js"></script>
+  <script src="app/Product/Zona/zona.js"></script>
 </body>
 </html>

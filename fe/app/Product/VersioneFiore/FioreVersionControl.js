@@ -1,5 +1,3 @@
-var app = angular.module('app', [])
-
 app.controller("listaFioriCtrl",function($scope,serviceListaFiori) {//creo il controller principale per la pagina
 
     $scope.listaFiori = [];//creo una lista 

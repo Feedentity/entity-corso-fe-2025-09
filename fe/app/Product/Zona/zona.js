@@ -1,5 +1,3 @@
-var app = angular.module('app',[]);
-
 app.directive("zoneCimitero", function() {
     return {
         scope:{
