@@ -1,0 +1,24 @@
+<body ng-app="app" ng-controller="listaFioriCtrl"><!--dico alla app quale e il suo controller principale-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script><!--importo la libreria di angular-->
+    <script src="/fe/app/Product/VersioneFiore/FioreVersionControl.js"></script><!--dico alla app dove sono gli script-->
+    <script src="/fe/app/Product/VersioneFiore/ServiceVersionFiori.js"></script>
+    <div class="listProduct_Container">
+        <div class="listProduct" ><!--attraverso ng repeat faccio apparire a schermo i dati presi dall'be-->
+                <table>
+                    <tr>
+                        <tr>nome</tr>
+                        <tr>descrizione</tr>
+                        <tr>prezzo</tr> 
+                    </tr>
+                
+            
+            
+                <tr ng-repeat="x in listaFiori.dati">
+                    <td>{{x.nome}}</td>
+                    <td>{{x.descrizione}}</td>
+                    <td>{{x.prezzo}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
