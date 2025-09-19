@@ -1,4 +1,4 @@
-var app =angular.module("app",['ngRoute']);
+var app =angular.module("app",[]);
 
 app.controller('shopTombaController', function($scope, datiTombe) {
         $scope.tombe = [];
@@ -42,7 +42,53 @@ function scelte(){
     let x =document.getElementById("dati");
     let versione= x.version.value;
     let zona = x.zone.value;
-    alert(zona);
-    alert(versione);
-    //chiamo funzione che manda i dati al backend
-}
+    let prezzo=0;
+    if(versione=="luxury"){   
+        prezzo+=1500;
+        if(zona=="A"){
+            prezzo=prezzo*(1+(5/100))
+            x.Prezzo.value=prezzo;
+        }
+        else if(zona=="B"){
+            prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+        else{
+             prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+    }
+    else if(versione!="Economy"){
+        prezzo+=1000;
+        if(zona=="A"){
+            prezzo=prezzo*(1+(5/100))
+            x.Prezzo.value=prezzo;
+        }
+        else if(zona=="B"){
+            prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+        else{
+             prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+    }
+    else{
+        prezzo+=600;
+        if(zona=="A"){
+            prezzo=prezzo*(1+(5/100))
+            x.Prezzo.value=prezzo;
+        }
+        else if(zona=="B"){
+            prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+        else{
+             prezzo=prezzo*(1+(3/100))
+            x.Prezzo.value=prezzo;
+        }
+
+    }
+
+};
+
