@@ -1,9 +1,143 @@
 {
   "users": [
     {
-        "id": "1",
-        "nome": "admin",
-        "cognome": "admin"
+      "id": "1",
+      "nome": "admin",
+      "cognome": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "dataNascita": "1960/10/10",
+      "dataMorte": "",
+      "isAdmin": true
+    },
+
+    {
+      "id": "2",
+      "nome": "Mario",
+      "cognome": "Rossi",
+      "email": "mario@gmail.com",
+      "password": "mario123",
+      "dataNascita": "1975/06/06",
+      "dataMorte": "2024/12/12",
+      "isAdmin": false
+    },
+    {
+      "id": "3",
+      "nome": "Luigi",
+      "cognome": "Bianchi",
+      "email": "luigi@gmail.com",
+      "password": "luigi123",
+      "dataNascita": "1966/11/11",
+      "isAdmin": false
+    },
+    {
+      "id": "4",
+      "nome": "Francesco",
+      "cognome": "Franchi",
+      "email": "franchi@gmail.com",
+      "password": "franco123",
+      "dataNascita": "1966/03/03",
+      "isAdmin": false
+    }
+  ],
+  
+  "versioneTombe": [
+    {
+      "id": "1",
+      "nome": "Luxury",
+      "descrizione": "Tomba lussuosa con finiture eleganti, dettagli in oro e materiali di qualità top, ideale per fare invidia a Tutankhamon.",
+      "prezzo": 1500
+    },
+
+    {
+      "id": "2",
+      "nome": "Business",
+      "descrizione": "Tomba di fascia media con materiali di buonissima qualità e uno stile sobrio ed elegante. Consigliata a chi vuole riposare in pace con classe ed eleganza.",
+      "prezzo": 1000
+    },
+
+    {
+      "id": "3",
+      "nome": "Economy",
+      "descrizione": "Tomba economica standard, semplice ma dignitosa. Ideale per un budget limitato, tanto chi ci riposa non si può lamentare.",
+      "prezzo": 600
+    }
+  ],
+
+  "tombe": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "zona_id": 1,
+      "descrizione": "Tomba situata nella zona A",
+      "versione_id": "1"
+    }
+  ],
+
+  "zone":[
+    {
+      "id":1,
+      "nome": "A",
+      "capienza": 50,
+      "postiLiberi": 49,
+      "descrizione":"Zona situata all'ingresso del cimitero",
+      "sovrapprezzo": 5
+    },
+
+    {
+      "id":2,
+      "nome": "B",
+      "capienza": 50,
+      "postiLiberi": 50,
+      "descrizione":"Zona situata nella zona ovest del cimitero",
+      "sovrapprezzo": 3
+    },
+
+    {
+      "id":3,
+      "nome": "C",
+      "capienza": 50,
+      "postiLiberi": 50,
+      "descrizione":"Zona situata nella zone est del cimitero",
+      "sovrapprezzo": 3
+    }
+  ],
+
+  "tipoFiori":[
+    {
+      "id":1,
+      "nome": "Rose",
+      "descrizione": "Rose rosse e bianche da portare ai tuoi cari defunti",
+      "prezzo": 10
+    },
+
+    {
+      "id":2,
+      "nome": "Crisantemi",
+      "descrizione": "Il fiore più legato alla commemorazione dei defunti in Italia",
+      "prezzo": 10
+    }
+  ],
+
+  "shopTomba":[
+    {
+      "id":1,
+      "versioneTomba_id":1,
+      "zona_id": 1,
+      "user_id": 2,
+      "tomba_id": 1,
+      "sconto": 5
+    }
+  ],
+
+  "shopFiori":[
+    {
+      "id":1,
+      "fiore_id":1,
+      "user_id":3,
+      "tomba_id":1,
+      "sconto":2,
+      "comprato": true
     }
   ]
 }
