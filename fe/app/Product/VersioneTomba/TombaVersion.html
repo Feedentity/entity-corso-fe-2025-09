@@ -1,20 +1,36 @@
 <link rel="stylesheet" href="/fe/assets/css/Product.css" />
 
-  <div class="list-product-container" ng-app="app" ng-controller="tombaVersionCtrl">
+<div class="list-product-container" ng-app="app" ng-controller="tombaVersionCtrl">
     <div class="list-product">
-      <h1>VERSIONE DELLE TOMBE</h1>
-      <table>
-        <tr>
-          <th>Nome</th>
-          <th>Descrizione</th>
-          <th>Prezzo</th>
-        </tr>
+        <h1>VERSIONE DELLE TOMBE</h1>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+            </tr>
 
-        <tr ng-repeat="vt in versioneTombe">
-          <td>{{vt.nome}}</td>
-          <td>{{vt.descrizione}}</td>
-          <td>{{vt.prezzo | currency: '€'}}</td>
-        </tr>
-      </table>
+            <tr ng-repeat="vt in versioneTombe">
+                <td>{{vt.nome}}</td>
+                <td>{{vt.descrizione}}</td>
+                <td>{{vt.prezzo | currency: '€'}}</td>
+            </tr>
+        </table>
+
     </div>
-  </div>
+    <div class="addProduct">
+        <h1>AGGIUNGI VERSIONE TOMBE</h1>
+        <form ng-submit="submitTomba()">
+            <label>
+                <input type="text" ng-model="newTomba.nome" placeholder="Inserisci nome tomba">
+            </label>
+             <label>
+                <input type="text" ng-model="newTomba.descrizione" placeholder="Inserisci descrizione">
+            </label>
+             <label>
+                <input type="number" ng-model="newTomba.prezzo" placeholder="Inserisci prezzo tomba">
+            </label>
+            <button type="submit">Crea Tomba</button>
+        </form>
+    </div>
+</div>
