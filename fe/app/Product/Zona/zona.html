@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/fe/assets/css/Zone.css" />
+
 <body class="zone-page">
     <div class="zone-container" ng-app="app" ng-controller="zonaCtrl">
         <div class="zone-content">
@@ -12,12 +13,58 @@
                         <th>Posti liberi</th>
                         <th>Descrizione</th>
                         <th>Sovrapprezzo</th>
+                        <th>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr zone-cimitero ng-repeat="x in zone" z="x"></tr>
+                    <tr zone-cimitero ng-repeat="x in zoneTombe" z="x" a="azioni">
+                        <td ng-if="!edit">{{x.nome}}</td>
+                        <td ng-if="edit">
+                            <label> modifica nome
+                                <input type="text" ng-model="x.nome" />
+                            </label>
+                        </td>
+                        <td ng-if="!edit">{{x.capienza}}</td>
+                        <td ng-if="edit">
+                            <label> modifica capienza
+                                <input type="number" ng-model="x.capienza" />
+                            </label>
+                        </td>
+                        <td ng-if="!edit">{{x.descrizione}}</td>
+                        <td ng-if="edit">
+                            <label> modifica descrizione
+                                <input type="text" ng-model="x.capienza" />
+                            </label>
+                        </td>
+                        <td ng-if="!edit">{{x.sovrapprezzo}}</td>
+                        <td ng-if="edit">
+                            <label> modifica sovrapprezzo
+                                <input type="text" ng-model="x.sovrapprezzo" />
+                            </label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+
+            <div class="addProduct">
+                <h1>AGGIUNGI ZONA</h1>
+                <form ng-submit="submitZona()">
+                    <label>
+                        <input type="text" ng-model="newZona.nome" placeholder="Inserisci nome zona">
+                    </label>
+                    <label>
+                        <input type="number" ng-model="newZona.capienza" placeholder="Inserisci capienza">
+                    </label>
+                    <label>
+                        <input type="text" ng-model="newZona.descrizione" placeholder="Inserisci descrizione zona">
+                    </label>
+                    <label>
+                        <input type="number" ng-model="newZona.sovrapprezzo" placeholder="Inserisci sovrapprezzo zona">
+                    </label>
+
+                    <button type="submit">Crea Zona</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
