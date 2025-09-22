@@ -8,12 +8,35 @@
                 <th>Nome</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
+                <th>Azioni</th>
             </tr>
 
             <tr ng-repeat="vt in versioneTombe">
-                <td>{{vt.nome}}</td>
-                <td>{{vt.descrizione}}</td>
-                <td>{{vt.prezzo | currency: '€'}}</td>
+                <td ng-if="!edit">{{vt.nome}}</td>
+                <td ng-if="edit">
+                    <label> modifica nome
+                        <input type="text" ng-model="vt.nome" />
+                    </label>
+                </td>
+                <td ng-if="!edit">{{vt.descrizione}}</td>
+                <td ng-if="edit">
+                    <label> modifica descrizione
+                        <input type="text" ng-model="vt.descrizione" />
+                    </label>
+                </td>
+                <td ng-if="!edit">{{vt.prezzo | currency:'€'}}</td>
+                <td ng-if="edit">
+                    <label> modifica prezzo
+                        <input type="number" ng-model="vt.prezzo" placeholder="" />
+                    </label>
+                </td>
+
+                <td>
+                    <button type="submit" ng-click="removeTomba(vt)">Elimina</button>
+                    <button type="submit" ng-if="!edit" ng-click="editTomba()">Modifica</button>
+                    <button type="submit" ng-if="edit" ng-click="saveTomba(vt)">Salva</button>
+                </td>
+
             </tr>
         </table>
 
@@ -24,10 +47,10 @@
             <label>
                 <input type="text" ng-model="newTomba.nome" placeholder="Inserisci nome tomba">
             </label>
-             <label>
+            <label>
                 <input type="text" ng-model="newTomba.descrizione" placeholder="Inserisci descrizione">
             </label>
-             <label>
+            <label>
                 <input type="number" ng-model="newTomba.prezzo" placeholder="Inserisci prezzo tomba">
             </label>
             <button type="submit">Crea Tomba</button>
