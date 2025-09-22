@@ -12,6 +12,7 @@ form {
     margin: 20px;
     border: none;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -20,21 +21,21 @@ form img {
     display: none;
 }
 
-.container {
+body > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
     width: 100%;
 }
 
-.container h1 {
+h1 {
     color: #2c3e50;
     margin-bottom: 30px;
     font-size: 28px;
@@ -43,20 +44,20 @@ form img {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
+form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #34495e;
     font-weight: 500;
     margin-bottom: 20px;
 }
 
-input[type="text"], 
-input[type="password"] {
+input[type="text"],
+input[type="password"],
+input[type="date"] {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
@@ -68,8 +69,9 @@ input[type="password"] {
     color: #2c3e50;
 }
 
-input[type="text"]:focus, 
-input[type="password"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
@@ -113,7 +115,7 @@ h4 {
     align-self: flex-start;
 }
 
-ul {
+form ul {
     font-size: 14px;
     list-style-type: none;
     padding: 0;
@@ -121,14 +123,14 @@ ul {
     width: 100%;
 }
 
-li {
+form li {
     padding: 8px 0;
     color: #5a6c7d;
     position: relative;
     padding-left: 25px;
 }
 
-li::before {
+form li::before {
     content: '✓';
     position: absolute;
     left: 0;
@@ -136,7 +138,8 @@ li::before {
     font-weight: bold;
 }
 
-input[type="submit"] {
+button[type="submit"],
+button:not([type]) {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
@@ -152,11 +155,13 @@ input[type="submit"] {
     letter-spacing: 1px;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover,
+button:not([type]):hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
 }
 
-input[type="submit"]:active {
+button[type="submit"]:active,
+button:not([type]):active {
     transform: translateY(0);
 }
