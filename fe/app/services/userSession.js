@@ -24,6 +24,13 @@ app.service("utente", function ($resource) {
                 }
             });
         },
+        // Aggiorna i dati di sessione attuali.
+        refresh: function () {
+            sessionRequest = $resource('http://localhost:4000/users/:id', {id:"@id"})
+            sessionRequest.get({id: this.getUser().id}).$promise.then(function(user) {
+                    sessionStorage.userSession = JSON.stringify(user)
+            })
+        },
         // Imposta la sessione corrente a "null" e apre la pagina di login
         logout: function () {
             delete sessionStorage.userSession

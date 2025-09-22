@@ -1,0 +1,21 @@
+<div>
+    <form name="myForm">
+        <h1>Il tuo profilo</h1>
+
+        <label>Nome:</label>
+        <input type="text" ng-model="profile.nome" placeholder="Mario" /><br />
+
+        <label>Cognome:</label>
+        <input type="text" ng-model="profile.cognome" placeholder="Rossi" /><br />
+
+        <label>Email:</label>
+        <input type="text" ng-model="profile.email" placeholder="nome@mail.com" /><br />
+
+        <label>Data di nascita:</label>
+        <input type="date" ng-model="profile.dataNascita" placeholder="01/01/1970" /><br />
+
+        <button ng-click="saveUserChanges()">Salva</button><br><br>
+        <button ng-disabled="user.isAdmin()" ng-click="deleteUser()">Cancella profilo</button><br><br>
+        <p ng-if="showSaveBanner">Le tue modifiche sono state salvate.</p>
+    </form>
+</div>

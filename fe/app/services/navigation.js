@@ -22,8 +22,8 @@ app.factory("navigation", function ($location) {
             $location.path("/shop/fiori")
         },
         // Passa alla pagina di una specifica tomba
-        goTomba: function (id) {
-            $location.path("/tomba/"+id)
+        goProfile: function () {
+            $location.path("/user")
         },
         // Passa alla pagina di amministrazione per la lista di user
         goUsers: function () {

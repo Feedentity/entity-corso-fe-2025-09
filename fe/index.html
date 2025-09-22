@@ -14,6 +14,7 @@
   <header class="site-header" ng-controller = "headCtrl">
     <h1>Cimitero World</h1>
     <nav>
+      <a href ng-if="user.isLoggedIn()" ng-click="nav.goProfile()">Profilo</a>
       <a href ng-if="user.isLoggedIn()" ng-click="nav.goHome()">Home</a>
       <a href ng-if="!user.isLoggedIn()" ng-click="nav.goLogin()">Login</a>
       <a href="#!/about">About</a>
@@ -40,12 +41,13 @@
   <script src="app/services/navigation.js"></script>
   <script src="app/services/userSession.js"></script>
   <script src="app/Login/login.js"></script>
+  <script src="app/Login/controllerRegistrazione.js"></script>
+  <script src="app/profile/profile.js"></script>
   <script src="app/Shop/ShopFiore/ShopFiore.js"></script>
   <script src="app/Shop/ShopTomba/ShopTomba.js"></script>
   <script src="app/Product/VersioneFiore/FioreVersionControl.js"></script>
   <script src="app/Product/VersioneFiore/ServiceVersionFiori.js"></script>
   <script src="app/Product/VersioneTomba/TombaVersion.js"></script>
   <script src="app/Product/Zona/zona.js"></script>
-  <script src="app/Login/controllerRegistrazione.js"></script>
 </body>
 </html>

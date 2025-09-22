@@ -15,26 +15,27 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .when('/shop/tombe', {
             templateUrl: 'app/Shop/ShopTomba/shopTomba.html',
-            controller: 'shopTombaController',
+            controller: 'shopTombaController'
         })
         .when('/shop/fiori', {
             templateUrl: 'app/Shop/ShopFiore/ShopFiore.html',
             controller: 'ShopFioreCtrl'
         })
-        .when('/tomba/:id', {
-            template: placeholder
+        .when('/user', {
+            templateUrl: 'app/profile/profile.html',
+            controller: 'profileCtrl'
         })
         .when('/admin/tipiTomba', {
             templateUrl: 'app/Product/VersioneTomba/TombaVersion.html',
-            controller: 'tombaVersionCtrl',
+            controller: 'tombaVersionCtrl'
         })
         .when('/admin/tipiFiore', {
             templateUrl: 'app/Product/VersioneFiore/FioreVersion.html',
-            controller: 'listaFioriCtrl',
+            controller: 'listaFioriCtrl'
         })
         .when('/admin/zone', {
             templateUrl: 'app/Product/Zona/zona.html',
-            controller: 'zonaCtrl',
+            controller: 'zonaCtrl'
         })
         .when('/about', {
             template: '<section class="card"><h2>About</h2><p>Progetto di prova per il corso somministrato da Feed SRL</p></section>'
