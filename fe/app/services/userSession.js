@@ -1,19 +1,18 @@
 //Servizio che gestisce la user session. Quando caricato, contiene un oggetto che contiene funzioni di gestione per la sessione attuale.
 app.service("utente", function ($resource) {
-    var userSession = null
     
     return {
         // Restituisce true se esiste una sessione utente, false se non esiste
         isLoggedIn: function () {
-            return userSession != null
+            return sessionStorage.userSession != undefined
         },
         // Restituisce lo user attuale, o null se non ce n'è uno
         getUser: function () {
-            return userSession
+            return JSON.parse(sessionStorage.userSession)
         },
         // Restituisce true se la sessione utente esiste ed è un admin, falso altrimenti
         isAdmin: function () {
-            return userSession ? userSession.isAdmin : false
+            return sessionStorage.userSession ? JSON.parse(sessionStorage.userSession).isAdmin : false
         },
         // Dati una mail e una password, cerca lo user corrispondente all'interno del db, e lo imposta come sessione corrente se lo trova.
         login: function (mail, pass) {
@@ -21,13 +20,13 @@ app.service("utente", function ($resource) {
             sessionRequest.query().$promise.then(function (arr) {
                 let elem = arr.find((u) => u.email == mail)
                 if (elem && elem.password == pass) {
-                    userSession = elem
+                    sessionStorage.userSession = JSON.stringify(elem)
                 }
             });
         },
         // Imposta la sessione corrente a "null" e apre la pagina di login
         logout: function () {
-            userSession = null
+            delete sessionStorage.userSession
         }
     }
 });
