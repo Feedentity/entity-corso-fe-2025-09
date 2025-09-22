@@ -1,130 +1,125 @@
-app.controller("shopTombaController",function ($scope, datiTombe, inserimentoTomba) {
+app.controller(
+  "shopTombaController",
+  function ($scope, datiTombe, inserimentoTomba, prezzoTomba, sovraprezzo) {
+    //scope per avere i dati delle tombe
     $scope.tombe = [];
     datiTombe.getDati().then(function (response) {
       $scope.tombe = response.data;
     });
-    //var x=utente.getUser().id;
-    //alert(x);
-    $scope.newTomba = {};
-    $scope.scelte = function() {scelte($scope.newTomba)};
-    function scelte(newTomba) {
-      let prezzo =0;  
-      var vId=0;
-      var zId=0;
-      let x = document.getElementById("dati");
-      let versione = x.version.value;
-      let zona = x.zone.value;
-      let descrizione = x.descrizione.value;
-      newTomba.descrizione = descrizione;
-      if (versione == "luxury") {
-        prezzo += 1500;
-        vId = 1;
-        newTomba.versione_id = vId;
-        
-        if (zona == "A") {
-          prezzo = prezzo * (1 + 5 / 100);
-          x.Prezzo.value = prezzo;
-          zId=1;
-          newTomba.zona_id = zId;
-        } else if (zona == "B") {
-          prezzo = prezzo * (1 + 3 / 100);
-          x.Prezzo.value = prezzo;
-          zId=2;
-          newTomba.zona_id = zId;
-        } else {
-          prezzo = prezzo * (1 + 3 / 100);
-          x.Prezzo.value = prezzo;
-          zId=3;
-          newTomba.zona_id = zId;
-        }
-      } 
-      else if (versione == "Business") {
-        prezzo += 1000;
-        vId = 2;
-        newTomba.versione_id = vId;
-        
-        if (zona == "A") {
-          prezzo = prezzo * (1 + 5 / 100);
-          x.Prezzo.value = prezzo;
-          zId=1;
-          newTomba.zona_id = zId;
-        } else if (zona == "B") {
-          prezzo = prezzo * (1 + 3 / 100);
-          x.Prezzo.value = prezzo;
-          zId=2;
-          newTomba.zona_id = zId;
-        } else {
-          prezzo = prezzo * (1 + 3 / 100);
-          zId=3;
-          newTomba.zona_id = zId;
-          x.Prezzo.value = prezzo;
-        }
-      } 
-      else if (versione=="Economy"){
-        prezzo += 600;
-        vId = 3;
-        newTomba.versione_id = vId;
-        
-        if (zona == "A") {
-          prezzo = prezzo * (1 + 5 / 100);
-          x.Prezzo.value = prezzo;
-          zId=1;
-          newTomba.zona_id = zId;
-        } else if (zona == "B") {
-          prezzo = prezzo * (1 + 3 / 100);
-          x.Prezzo.value = prezzo;
-          zId=2;
-          newTomba.zona_id = zId;
-        } else {
-          prezzo = prezzo * (1 + 3 / 100);
-          x.Prezzo.value = prezzo;
-          zId=3;
-          newTomba.zona_id = zId;
-        }
-      }
-      alert(newTomba.descrizione+newTomba.versione_id+newTomba.zona_id);
-    
-    }
+    //scope per avere i prezzi delle varie versioni
+    $scope.prezzi = [];
+    prezzoTomba.getDati().then(function (response) {
+      $scope.prezzi = response;
+    });
+    //scope per avere il sovraprezzo delle zone
+    $scope.sovraprezzo = [];
+    sovraprezzo.getDati().then(function (response) {
+      $scope.sovraprezzo = response;
+    });
 
-    $scope.submitTomba = function () {
-      inserimentoTomba.createTomba($scope.newTomba);
-      $scope.newTomba = "";
-      alert("tomba inserita");
+    $scope.newTomba = {};
+    //funzione per prendere i dati e stampare il costo
+    $scope.scelte = function () {
+      scelte($scope.newTomba, $scope.tombe, $scope.prezzi, $scope.sovraprezzo);
     };
-  }
+    function scelte(newTomba) {
+      let x = document.getElementById("dati");
+      let versioneId = x.version.value;
+      let zonaId = x.zona.value;
+      let descrizione = x.descrizione.value;
+      var prezzo = $scope.prezzi[versioneId - 1].prezzo;
+      var sovraprezzo = $scope.sovraprezzo[zonaId - 1].sovrapprezzo;
+      x.Prezzo.value = prezzo * (1 + sovraprezzo / 100)+" €";
+      newTomba.descrizione = descrizione;
+      newTomba.versione_id = versioneId;
+      newTomba.zona_id = zonaId;
+    }
+    //submit per mandare al backend i dati e memorizzare
+      $scope.submitTomba = function () {
+        inserimentoTomba.createTomba($scope.newTomba);
+        $scope.newTomba = "";
+        alert("tomba inserita");s
+      };
+    }
 );
-//funzione che prende tramite http i dati dal db
+
+// service che prende i dati
 app.service("datiTombe", function ($http) {
   this.getDati = function () {
     return $http.get("/be/db.json").then(function (response) {
-      return response;
+      return response.data; // meglio restituire direttamente i dati
     });
   };
 });
-//diretiva per creare il template della selezione delle versioni
-app.directive("myVersion", function () {
+
+// direttiva
+app.directive("myVersion", function (datiTombe) {
   return {
+    restrict: "E",
+    scope: {},
     template: `
-        <select id="version" >
-            <option value="luxury">{{tombe.versioneTombe[0].nome}}</option>
-            <option value="Business">{{tombe.versioneTombe[1].nome}}</option>
-            <option value="Economy">{{tombe.versioneTombe[2].nome}}</option>
-         </select>   `,
+      <select id="version" ng-model="selectedVersion">
+        <option ng-repeat="versione in tombe.versioneTombe" 
+                value="{{versione.id}}">
+          {{versione.nome}}
+        </option>
+      </select>
+    `,
+    link: function (scope) {
+      datiTombe.getDati().then(function (data) {
+        scope.tombe = data; // qui mettiamo i dati presi dal db
+      });
+    },
   };
 });
-app.directive("myZone", function () {
+app.directive("myZone", function (datiTombe) {
   return {
+    restrict: "E",
+    scope: {},
     template: `
-        <select id="zone">
-            <option value="A"> Zona {{tombe.zone[0].nome}}</option>
-            <option value="B">Zona {{tombe.zone[1].nome}}</option>
-            <option value="C">Zona {{tombe.zone[2].nome}}</option>
-         </select>   `,
+      <select id="zona" ng-model="selectedVersion">
+        <option ng-repeat="zona in tombe.zone" 
+                value="{{zona.id}}">
+         Zona {{zona.nome}}
+        </option>
+      </select>
+    `,
+    link: function (scope) {
+      datiTombe.getDati().then(function (data) {
+        scope.tombe = data; // qui mettiamo i dati presi dal db
+      });
+    },
   };
 });
 app.service("inserimentoTomba", function ($resource) {
   var resources = $resource("http://localhost:4000/tombe/:id", { id: "@id" });
   this.createTomba = function (tomba) {
     return resources.save(tomba).$promise;
+  };
+});
+app.service("prezzoTomba", function ($resource) {
+  var resources = $resource(
+    "http://localhost:4000/versioneTombe/:id",
+    { id: "@id" },
+    {
+      update: { method: "PUT" },
+    }
+  );
+
+  this.getDati = function () {
+    return resources.query().$promise;
+  };
+});
+app.service("sovraprezzo", function ($resource) {
+  var resources = $resource(
+    "http://localhost:4000/zone/:id",
+    { id: "@id" },
+    {
+      update: { method: "PUT" },
+    }
+  );
+
+  this.getDati = function () {
+    return resources.query().$promise;
   };
 });
