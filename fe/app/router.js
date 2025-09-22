@@ -5,6 +5,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/login', {
             templateUrl: 'app/Login/login.html',
             })
+        .when('/signup', {
+            templateUrl: 'app/Login/registrazione.html',
+            controller: 'signUpCtrl'
+            })
         .when('/home', {
             template: placeholder
         })

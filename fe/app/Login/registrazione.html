@@ -1,55 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Registrazione</title>
+<div>
+    <form name="myForm">
+        <h1>Registrati nel nostro cimitero virtuale!</h1>
 
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-resource.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione</title>
-</head>
+        <label>Nome:</label>
+        <input type="text" ng-model="newUser.nome" placeholder="Mario" /><br />
 
-<body ng-app="app", ng-controller="signUp">
-    <div>
-        <form name="myForm">
-            <h1>Registrati nel nostro cimitero virtuale!</h1>
+        <label>Cognome:</label>
+        <input type="text" ng-model="newUser.cognome" placeholder="Rossi" /><br />
 
-            <label for="">Nome:</label>
-            <input type="text" ng-model="newUser.nome" placeholder="Mario" /><br />
+        <label>Email:</label>
+        <input type="text" ng-model="newUser.email" placeholder="nome@mail.com" /><br />
 
-            <label for="">Cognome:</label>
-            <input type="text" ng-model="newUser.cognome" placeholder="Rossi" /><br />
+        <label>Password:</label>
+        <input type="password" id="pswd" ng-model='newUser.password' placeholder="Inserire una password valida" />
+        <button type="button" onclick="showPswd()">
+            <img src="https://static.thenounproject.com/png/777494-200.png" width="10" heigth="10" />
+        </button><br>
 
-            <label for="">Email:</label>
-            <input type="text" ng-model="newUser.email" placeholder="nome@mail.com" /><br />
+        <label>Data di nascita:</label>
+        <input type="date" ng-model="newUser.dataNascita" placeholder="01/01/1970" /><br />
 
-            <label for="">Password:</label>
-            <input type="password" id="pswd" ng-model='newUser.password' placeholder="Inserire una password valida" />
-            <button type="button" onclick="showPswd()">
-                <img src="https://static.thenounproject.com/png/777494-200.png" width="10" heigth="10" />
-            </button><br>
+        <button ng-click="submitUser()">Registrati</button><br><br>
 
-            <label for="">Data di nascita:</label>
-            <input type="date" ng-model="newUser.dataNascita" placeholder="01/01/1970" /><br />
-
-            <button ng-click="submitUser()">Registrati</button><br><br>
-
-            <h4>La password deve contenere:</h4>
-            <ul>
-                <li>Almeno 8 caratteri.</li>
-                <li>Almeno una lettera maiuscola.</li>
-                <li>Almeno una lettera minuscola.</li>
-                <li>Almeno un numero.</li>
-                <li>Almeno un carattere speciale(!?/:...).</li>
-            </ul>
-            <br /><br />
-        </form>
-
-        <script src="login.js"></script>
-        <script src="controllerRegistrazione.js"></script>
-
-    </div>
-</body>
-
-</html>
+        <h4>La password deve contenere:</h4>
+        <ul>
+            <li>Almeno 8 caratteri.</li>
+            <li>Almeno una lettera maiuscola.</li>
+            <li>Almeno una lettera minuscola.</li>
+            <li>Almeno un numero.</li>
+            <li>Almeno un carattere speciale(!?/:...).</li>
+        </ul>
+        <br /><br />
+    </form>
+</div>

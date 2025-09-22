@@ -5,6 +5,10 @@ app.factory("navigation", function ($location) {
         goLogin: function () {
             $location.path("/login")
         },
+        // Passa alla pagina di login
+        goSignUp: function () {
+            $location.path("/signup")
+        },
         // Passa alla pagina home
         goHome: function () {
             $location.path("/home")
@@ -37,6 +41,10 @@ app.factory("navigation", function ($location) {
         goZone: function () {
             $location.path("/admin/zone")
         },
+        // Restituisce il path corrente
+        getPath: function() {
+            return $location.path()
+        }
     }
     return obj
 });

@@ -1,5 +1,5 @@
-var app = angular.module('app', ['ngRoute', 'ngResource'])
-app.controller('signUp', function ($scope, signupService, $location, validazioneForm) {
+
+app.controller('signUpCtrl', function ($scope, signupService, navigation, validazioneForm) {
     $scope.newUser = {};
     $scope.Users = [];
     $scope.Users = signupService.getUsers();
@@ -14,7 +14,7 @@ app.controller('signUp', function ($scope, signupService, $location, validazione
         signupService.createUser($scope.newUser).then(function (response) {
             $scope.Users.push(response.data);
 
-            $location.path('/login')
+            navigation.goLogin()
         });
 
         $scope.newUser = {};
