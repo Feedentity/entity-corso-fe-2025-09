@@ -37,7 +37,7 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'zonaCtrl',
         })
         .when('/about', {
-            template: '<section class="card"><h2>About</h2><p>Starter AngularJS v1 minimale.</p></section>'
+            template: '<section class="card"><h2>About</h2><p>Progetto di prova per il corso somministrato da Feed SRL</p></section>'
         })
         .otherwise({ redirectTo: '/login' });
 

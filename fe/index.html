@@ -14,10 +14,12 @@
   <header class="site-header" ng-controller = "headCtrl">
     <h1>Cimitero World</h1>
     <nav>
-      <a href ng-click="nav.goHome()">Home</a>
+      <a href ng-if="user.isLoggedIn()" ng-click="nav.goHome()">Home</a>
+      <a href ng-if="!user.isLoggedIn()" ng-click="nav.goLogin()">Login</a>
       <a href="#!/about">About</a>
-      <a href ng-click="nav.goShopTombe()">ShopTomba</a>
-      <a href ng-click="nav.goShopFiori()">ShopFiore</a>
+      <a href ng-if="user.isLoggedIn()" ng-click="nav.goShopTombe()">ShopTomba</a>
+      <a href ng-if="user.isLoggedIn()" ng-click="nav.goShopFiori()">ShopFiore</a>
+      <a href ng-if="user.isLoggedIn()" ng-click="user.logout(); nav.goLogin()">Esci</a>
       <div ng-if="user.isAdmin()"> <!--admin only-->
       <a href ng-click="nav.goZone()">Zone</a>
       <a href ng-click="nav.goTipiFiore()">Tipi Fiore</a>
