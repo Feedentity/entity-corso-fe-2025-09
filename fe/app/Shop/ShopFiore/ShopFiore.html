@@ -1,17 +1,53 @@
-<link rel="stylesheet" href="/fe/assets/css/Shop.css">
+<link rel="stylesheet" href="/fe/assets/css/ShopFiore.css">
 
 <section class="card">
 <div>
     <h1>SHOP FIORE</h1>
-    <div>
-        <button>Carrello</button>
-    </div>
 </div>
+
+<!-- Sezione prodotti -->
 <div ng-repeat="f in fiori">
     <h2>{{f.nome}}</h2>
     <p>{{f.descrizione}}</p>
-    <span>{{f.prezzo}}</span>
+    <span>{{f.prezzo}}€</span>
     <br>
-    <input type="button" value="Aggiungi al carrello" ng-click="AggiungiAlCarrello()" />
+    <br>
+    <input type="button" value="Aggiungi al carrello" ng-click="AggiungiAlCarrello(f)" />
 </div>
+
+<br>
+
+<!-- Bottone per mostrare e nascondere carrello -->
+<div>
+    <button ng-click="ToggleCarrello()">
+        {{mostraCarrello ? 'Nascondi Carrello' : 'Mostra Carrello'}} 
+        ({{carrello.length}} elementi)
+    </button>
+</div>
+
+<!-- Sezione del carrello -->
+<div ng-show="mostraCarrello" class="carrello-sezione">
+    <h2>Il tuo carrello:</h2>
+    
+    <div ng-if="carrello.length === 0">
+        <p>Il carrello è vuoto</p>
+    </div>
+    
+    <div ng-if="carrello.length > 0">
+        <div ng-repeat="item in carrello" class="carrello-item">
+            <h3>{{item.nome}}</h3>
+            <p>{{item.descrizione}}</p>
+            <p>Prezzo: {{item.prezzo}}€</p>
+            <p>Quantità: {{item.quantita}}</p>
+            <p>Subtotale: {{item.prezzo * item.quantita}}€</p>
+            <button ng-click="RimuoviDalCarrello($index)">Rimuovi</button>
+            <hr>
+        </div>
+        
+        <div class="totale">
+            <h3>Totale: {{CalcolaTotale()}}€</h3>
+        </div>
+    </div>
+</div>
+
 </section>

@@ -1,29 +1,23 @@
-<body>
-    <div ng-app="app" ng-controller="zonaCtrl">
+<link rel="stylesheet" href="/fe/assets/css/Zone.css" />
+<body class="zone-page">
+    <div class="zone-container" ng-app="app" ng-controller="zonaCtrl">
+        <div class="zone-content">
+            <h1>Zone del cimitero</h1>
 
-        <h1>Zone del cimitero</h1>
-
-        <table width="100%">
-            <tr>
-                <td>
-                    <h4>Settore</h4>
-                </td>
-                <td>
-                    <h4>Capienza</h4>
-                </td>
-                <td>
-                    <h4>Posti liberi</h4>
-                </td>
-                <td>
-                    <h4>Descrizione</h4>
-                </td>
-                <td>
-                    <h4>Sovrapprezzo</h4>
-                </td>
-            </tr>
-            <tr zone-cimitero ng-repeat="x in zone" z="x"></tr>
-        </table>
-
-
+            <table class="zone-table" width="100%">
+                <thead>
+                    <tr>
+                        <th>Settore</th>
+                        <th>Capienza</th>
+                        <th>Posti liberi</th>
+                        <th>Descrizione</th>
+                        <th>Sovrapprezzo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr zone-cimitero ng-repeat="x in zone" z="x"></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
