@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/fe/assets/css/Product.css" />
-
-
-  <div class="list-product-container" ng-app="app" ng-controller="listaFioriCtrl">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-resource.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+<script src="/fe/app/Product/VersioneFiore/FioreVersionControl.js"></script>
+<script src="/fe/app/Product/VersioneFiore/ServiceVersionFiori.js"></script>
+  <div class="list-product-container" ng-app="app" ng-controller="listaFioriCtrl"></div>>
       <div class="list-product">
         <h1>LISTA DEI FIORI</h1>
       <!--attraverso ng repeat faccio apparire a schermo i dati presi dall'be-->
@@ -10,13 +12,43 @@
           <th>nome</th>
           <th>descrizione</th>
           <th>prezzo</th>
+          <th>Azioni</th>
         </tr>
 
-        <tr ng-repeat="x in listaFiori.dati">
+        <tr ng-repeat="x in datiFiori">
           <td>{{x.nome}}</td>
           <td>{{x.descrizione}}</td>
           <td>{{x.prezzo}}</td>
+          <td><button type="submit" ng-click="cancella(x) ">Elimina</button></td>
         </tr>
       </table>
+
+      <div class="addProduct">
+        <form action="" ng-submit="submitFiore()">
+        <label>
+          <input type="text" ng-model="newFiore.nome" placeholder="Inserisci il nome del nuovo fiore">
+        </label>
+        <label>
+          <input type="text" ng-model="newFiore.descrizione" placeholder="inserisci la descrizione del nuovo fiore"> 
+        </label>
+        <label>
+          <input type="text" ng-model="newFiore.prezzo" placeholder="inserisci il prezzo del nuovo fiore">
+        </label>
+        <button type="submit">Crea fiore</button>
+        
+        </form>
+
+       <!-- <div class="deleteProduct">
+          <form >
+          <label>
+              <input type="text" ng-model="idFiori.id" placeholder="Inserisci l'id del campo che vuoi cancellare">     
+          </label>
+          
+          </form>
+
+
+        </div> -->
+
+      </div>
     </div>
   </div>
