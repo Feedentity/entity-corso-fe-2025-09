@@ -3,52 +3,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
 <script src="/fe/app/Product/VersioneFiore/FioreVersionControl.js"></script>
 <script src="/fe/app/Product/VersioneFiore/ServiceVersionFiori.js"></script>
-  <div class="list-product-container" ng-app="app" ng-controller="listaFioriCtrl"></div>>
-      <div class="list-product">
-        <h1>LISTA DEI FIORI</h1>
-      <!--attraverso ng repeat faccio apparire a schermo i dati presi dall'be-->
-      <table>
-        <tr>
-          <th>nome</th>
-          <th>descrizione</th>
-          <th>prezzo</th>
-          <th>Azioni</th>
-        </tr>
+<div class="list-product-container" ng-app="app" ng-controller="listaFioriCtrl"></div>>
+<div class="list-product">
+  <h1>LISTA DEI FIORI</h1>
+  <!--attraverso ng repeat faccio apparire a schermo i dati presi dall'be-->
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Descrizione</th>
+      <th>Prezzo</th>
+      <th>Azioni</th>
+    </tr>
 
-        <tr ng-repeat="x in datiFiori">
-          <td>{{x.nome}}</td>
-          <td>{{x.descrizione}}</td>
-          <td>{{x.prezzo}}</td>
-          <td><button type="submit" ng-click="cancella(x) ">Elimina</button></td>
-        </tr>
-      </table>
-
-      <div class="addProduct">
-        <form action="" ng-submit="submitFiore()">
-        <label>
-          <input type="text" ng-model="newFiore.nome" placeholder="Inserisci il nome del nuovo fiore">
+    <tr ng-repeat="x in datiFiori">
+      <td ng-if="!edit">{{x.nome}}</td>
+      <td ng-if="edit">
+        <label> modifica nome
+          <input type="text" ng-model="x.nome" />
         </label>
-        <label>
-          <input type="text" ng-model="newFiore.descrizione" placeholder="inserisci la descrizione del nuovo fiore"> 
+      </td>
+      <td ng-if="!edit">{{x.descrizione}}</td>
+      <td ng-if="edit">
+        <label> modifica descrizione
+          <input type="text" ng-model="x.descrizione" />
         </label>
-        <label>
-          <input type="text" ng-model="newFiore.prezzo" placeholder="inserisci il prezzo del nuovo fiore">
+      </td>
+      <td ng-if="!edit">{{x.prezzo}}</td>
+      <td ng-if="edit">
+        <label> modifica prezzo
+          <input type="text" ng-model="x.prezzo" placeholder="" />
         </label>
-        <button type="submit">Crea fiore</button>
-        
-        </form>
+      </td>
 
-       <!-- <div class="deleteProduct">
-          <form >
-          <label>
-              <input type="text" ng-model="idFiori.id" placeholder="Inserisci l'id del campo che vuoi cancellare">     
-          </label>
-          
-          </form>
+      <td>
+        <button type="submit" ng-click="cancella(x)">Elimina</button>
+        <button type="submit" ng-if="!edit" ng-click="editFiori()">Modifica</button>
+        <button type="submit" ng-if="edit" ng-click="saveFiore(x)">Salva</button>
+      </td>
 
-
-        </div> -->
-
-      </div>
-    </div>
-  </div>
+    </tr>
+  </table>
+  </table>
+</div>
+<div class="addProduct">
+  <form action="" ng-submit="submitFiore()">
+    <label>
+      <input type="text" ng-model="newFiore.nome" placeholder="Inserisci il nome del nuovo fiore">
+    </label>
+    <label>
+      <input type="text" ng-model="newFiore.descrizione" placeholder="inserisci la descrizione del nuovo fiore">
+    </label>
+    <label>
+      <input type="text" ng-model="newFiore.prezzo" placeholder="inserisci il prezzo del nuovo fiore">
+    </label>
+    <button type="submit">Crea fiore</button>
+  </form>
+</div>
+</div>
+</div>
