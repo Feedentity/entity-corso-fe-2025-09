@@ -6,7 +6,7 @@
 </div>
 
 <!-- Sezione prodotti -->
-<div ng-repeat="f in fiori">
+<div ng-repeat="f in fiori track by f.id" ng-if="f && f.id && f.nome && f.prezzo !== undefined">
     <h2>{{f.nome}}</h2>
     <p>{{f.descrizione}}</p>
     <span>{{f.prezzo}}€</span>
@@ -46,6 +46,7 @@
         
         <div class="totale">
             <h3>Totale: {{CalcolaTotale()}}€</h3>
+            <button ng-click="AcquistaCarrello()">Acquista</button>
         </div>
     </div>
 </div>

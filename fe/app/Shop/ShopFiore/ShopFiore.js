@@ -5,6 +5,14 @@ app.controller("ShopFioreCtrl", function ($scope, ShopFioreService) {
   $scope.fiori = [];
   $scope.carrello = [];
   $scope.mostraCarrello = false;
+  $scope.newFiore = {};
+
+  $scope.acquisto = function() {
+    ShopFioreService.buyFiore($scope.newFiore).then(function(response) {
+      $scope.fiori.push(response.data);
+    });
+    $scope.newFiore = {};
+  }
 
   ShopFioreService.getFiori().then(function(response) {
     $scope.fiori = response; 
@@ -48,6 +56,14 @@ app.controller("ShopFioreCtrl", function ($scope, ShopFioreService) {
     
     return totale;
   };
+
+  // Funzione per acquistare il carrello
+  $scope.AcquistaCarrello = function () {
+    ShopFioreService.acquistaCarrello($scope.carrello).then(function(response) {
+      $scope.carrello = [];
+      $scope.mostraCarrello = false;
+    });
+  };
 });
 
 app.service("ShopFioreService", function ($resource) {
@@ -59,8 +75,25 @@ app.service("ShopFioreService", function ($resource) {
     }
   );
   
+  var ordineResource = $resource(
+    "http://localhost:4000/shopFiori",
+    {},
+    {
+      save: { method: "POST" }
+    }
+  );
+  
   // Funzione per prendere TUTTI i fiori dal database
   this.getFiori = function () {
     return resources.query().$promise;
+  };
+  
+  this.buyFiore = function (fiore) {
+    return resources.save(fiore).$promise;
+  }
+  
+  // Funzione per acquistare il carrello
+  this.acquistaCarrello = function (ordini) {
+    return ordineResource.save({ ordini: ordini }).$promise;
   };
 });
